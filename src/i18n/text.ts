@@ -72,7 +72,7 @@ export interface AppText {
 
 const EN_TEXT: AppText = {
   app: {
-    title: "Minti Converter",
+    title: "Local Image Converter",
     subtitle: "Client-side PNG/JPEG/WebP.",
   },
   language: {
@@ -134,7 +134,7 @@ const EN_TEXT: AppText = {
     outTotal: "Out Total",
     delta: "Delta",
     saved: "Saved",
-    downloadShort: "DL",
+    downloadShort: "Download",
     empty: "Results will appear here.",
     wait: "Wait",
   },
