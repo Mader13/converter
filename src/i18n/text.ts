@@ -1,10 +1,16 @@
 import type { ConversionSettings, JobStatus } from "../types/image";
+import type { PdfTool } from "../types/pdf";
 
 export type Language = "en" | "ru";
+export type ActiveSection = 'images' | 'pdfs'
 
 type ResizeMode = ConversionSettings["resizeMode"];
 
 export interface AppText {
+  nav: {
+    images: string;
+    pdfs: string;
+  };
   actionBar: {
     active: string;
     clearQueue: string;
@@ -68,12 +74,33 @@ export interface AppText {
     width: string;
   };
   status: Record<JobStatus, string>;
+  pdf: {
+    title: string;
+    tools: Record<PdfTool, string>;
+    dropHint: Record<PdfTool, string>;
+    run: string;
+    running: string;
+    clear: string;
+    removeFile: string;
+    moveUp: string;
+    moveDown: string;
+    browse: string;
+    noFiles: string;
+    mergeMin: string;
+    download: string;
+    statusDone: string;
+    statusError: string;
+  };
 }
 
 const EN_TEXT: AppText = {
+  nav: {
+    images: 'Images',
+    pdfs: 'PDFs',
+  },
   app: {
-    title: "Local Image Converter",
-    subtitle: "Client-side PNG/JPEG/WebP.",
+    title: "Local Converter",
+    subtitle: "Client-side PNG/JPEG/WebP/PDF.",
   },
   language: {
     label: "Language",
@@ -145,12 +172,43 @@ const EN_TEXT: AppText = {
     done: "Done",
     error: "Error",
   },
+  pdf: {
+    title: 'PDF Tools',
+    tools: {
+      'pdf-to-jpg': 'PDF → JPG',
+      'jpg-to-pdf': 'JPG → PDF',
+      'merge-pdf': 'Merge PDF',
+      'split-pdf': 'Split PDF',
+    },
+    dropHint: {
+      'pdf-to-jpg': 'Drop PDF files here',
+      'jpg-to-pdf': 'Drop JPG/JPEG files here',
+      'merge-pdf': 'Drop PDF files here (2 or more)',
+      'split-pdf': 'Drop one PDF file here',
+    },
+    run: 'Run',
+    running: 'Processing…',
+    clear: 'Clear',
+    removeFile: 'Remove',
+    moveUp: '↑',
+    moveDown: '↓',
+    browse: 'Browse Files',
+    noFiles: 'No files added.',
+    mergeMin: 'Add at least 2 PDF files to merge.',
+    download: 'Download',
+    statusDone: 'Done — file downloaded.',
+    statusError: 'Error',
+  },
 };
 
 const RU_TEXT: AppText = {
+  nav: {
+    images: 'Изображения',
+    pdfs: 'PDF',
+  },
   app: {
-    title: "Локальный конвертер изображений",
-    subtitle: "Конвертер PNG/JPEG/WebP.",
+    title: "Локальный конвертер",
+    subtitle: "Конвертер PNG/JPEG/WebP/PDF.",
   },
   language: {
     label: "Язык",
@@ -222,6 +280,33 @@ const RU_TEXT: AppText = {
     processing: "Обработка",
     done: "Готово",
     error: "Ошибка",
+  },
+  pdf: {
+    title: 'PDF Инструменты',
+    tools: {
+      'pdf-to-jpg': 'PDF → JPG',
+      'jpg-to-pdf': 'JPG → PDF',
+      'merge-pdf': 'Объединить PDF',
+      'split-pdf': 'Разбить PDF',
+    },
+    dropHint: {
+      'pdf-to-jpg': 'Перетащите PDF файлы сюда',
+      'jpg-to-pdf': 'Перетащите JPG/JPEG файлы сюда',
+      'merge-pdf': 'Перетащите PDF файлы (2 или больше)',
+      'split-pdf': 'Перетащите один PDF файл',
+    },
+    run: 'Выполнить',
+    running: 'Обработка…',
+    clear: 'Очистить',
+    removeFile: 'Удалить',
+    moveUp: '↑',
+    moveDown: '↓',
+    browse: 'Выбрать файлы',
+    noFiles: 'Файлы не добавлены.',
+    mergeMin: 'Добавьте минимум 2 PDF файла дмя объединения.',
+    download: 'Скачать',
+    statusDone: 'Готово — файл скачан.',
+    statusError: 'Ошибка',
   },
 };
 
